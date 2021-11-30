@@ -16,6 +16,7 @@ Azzurro: #8edafc
   margin: 0;
   padding: 0;
   font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
 }
 
 /* .clearfix::after{
@@ -55,7 +56,7 @@ Azzurro: #8edafc
 
 /* LC + RC Headers */
 .in-header{
-  height: 60px;
+  height: 70px;
   background-color: #eaeaea;
   display: flex;
   justify-content: space-between;
@@ -64,8 +65,8 @@ Azzurro: #8edafc
 }
 
 .in-header img{
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
 }
 
@@ -107,7 +108,7 @@ Azzurro: #8edafc
 
 /* Alert */
 #container-left #alert{
-  height: 70px;
+  height: 80px;
   width: 100%;
   background-color: #8edafc;
   display: flex;
@@ -117,7 +118,7 @@ Azzurro: #8edafc
 #container-left #alert i{
   height: 60%;
   aspect-ratio: 1;
-  margin: 0 10px;
+  margin: 0 10px 0 20px;
   background-color: #ffffff;
   border-radius: 50%;
   color: #8edafc;
@@ -174,6 +175,7 @@ Azzurro: #8edafc
   width: 70%;
   margin-left: 10px;
   border: none;
+  font-size: 15px;
 }
 
 #container-left #find-input-box input:focus{
@@ -183,7 +185,7 @@ Azzurro: #8edafc
 
 /* Chatlist */
 #container-left .in-body-chatlist{
-  height: calc(100% - 120px);
+  height: calc(100% - 140px);
   width: 100%;
   overflow-y: scroll;
   background-color: #ffffff;
@@ -195,7 +197,7 @@ Azzurro: #8edafc
 }
 
 #container-left .chat{
-  height: 70px;
+  height: 80px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #eaeaea;
@@ -205,8 +207,16 @@ Azzurro: #8edafc
   background-color: #eaeaea;
 }
 
-#container-left .chat *{
-  margin: 0 0 1px 10px;
+#container-left .chat>*{
+  margin: 0 0 0 10px;
+}
+
+#container-left .chat-text{
+  margin: 0 0 0 20px;
+}
+
+#container-left .chat-text i{
+  margin: 5px 5px 5px 0;
 }
 
 #container-left .chat .user-last-msg{
@@ -215,8 +225,8 @@ Azzurro: #8edafc
 }
 
 #container-left .chat img{
-  height: 50px;
-  width: 50px;
+  height: 55px;
+  width: 55px;
   border-radius: 50%;
 }
 
