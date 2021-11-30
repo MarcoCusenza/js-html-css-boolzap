@@ -1,6 +1,165 @@
+/* +++ COMMONS +++ */
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'Source Sans Pro', sans-serif;
 }
+
+.clearfix::after{
+  display: table;
+  content: '';
+  clear: both;
+}
+
+.float-left{
+  float: left;
+}
+
+#page{
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(#009688 15%, #d8dbd5 15%);
+  padding: 5vh 0;
+  overflow-y: hidden;
+}
+/* +++ /COMMONS +++ */
+
+
+
+
+/* +++ BODY +++ */
+
+/* Body Commons */
+#container-window{
+  height: 90vh;
+  width: 80%;
+  min-width: 800px;
+  max-width: 1600px;
+  min-height: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.in-header{
+  height: 60px;
+  background-color: #eaeaea;
+}
+/* /Body Commons */
+
+
+/* Left Column */
+#container-left{
+  height: 100%;
+  width: 40%;
+  background-color: #ffffff;
+}
+
+/* LC Header */
+#container-left .in-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+}
+
+#container-left .in-header img{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+#container-left .in-header .user-info{
+  display: flex;
+  align-items: center;
+}
+
+#container-left .icon-box{
+  padding-right: 10px;
+  color: #b1b1b1;
+}
+
+#container-left .icon-box i{
+  transform: scale(1.2);
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+#container-left .user-info *{
+  margin: 0 5px;
+}
+/* /LC Header */
+
+/* LC Body */
+#container-left .in-body{
+  height: calc(100% - 60px);
+}
+
+#container-left #alert{
+  height: 70px;
+  width: 100%;
+  background-color: #8edafc;
+}
+
+#container-left #find{
+  height: 50px;
+  width: 100%;
+  background-color: #fafafa;
+}
+
+#container-left .in-body-bottom{
+  height: calc(100% - 120px);
+  width: 100%;
+  overflow-y: scroll;
+  background-color: #ffffff;
+}
+/* /LC Body */
+/* /Left Column */
+
+
+/* Right Column */
+#container-right{
+  height: 100%;
+  width: 60%;
+  position: relative;
+}
+
+/* RC Header */
+#container-right .in-header{
+  border-left: 1px solid #d6d6d6;
+}
+/* /RC Header */
+
+/* RC Body */
+#container-right .in-body{
+  height: calc(100% - 120px);
+  background-image: url(../img/mine.jpg);
+  overflow-y: scroll;
+}
+/* /RC Body */
+
+/* RC Footer */
+#container-right #in-footer{
+  height: 60px;
+  width: 100%;
+  background-color: #f3eeea;
+  position: absolute;
+  bottom: 0;
+}
+/* /RC Footer */
+/* /Right Column */
+/* +++ /BODY +++ */
+
+
+
+
+/* +++++ DEBUG +++++ */
+.debug #container-left{
+  background-color: deeppink;
+}
+
+.debug #container-right{
+  background-color: deepskyblue;
+}
+/* +++++ /DEBUG +++++ */
