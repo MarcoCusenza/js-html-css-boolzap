@@ -26,17 +26,17 @@
 <body>
   <div id="root">
     <div id="page" DISABLED-class="debug">
-      <!-- Finestra Boolzapp -->
+      <!-- Boolzapp Window -->
       <div id="container-window">
 
-        <!-- Colonna sinistra -->
+        <!-- Left Column -->
         <div id="container-left">
 
           <!-- LC Header -->
           <div class="in-header">
             <div class="user-info">
               <img src="img/avatar_io.jpg" alt="la tua immagine profilo">
-              <span id="userName">Nome Utente</span>
+              <span class="user-name">ROSENCR4NTZ</span>
             </div>
 
             <div class="icon-box">
@@ -45,33 +45,76 @@
               <i class="fas fa-ellipsis-v"></i>
             </div>
           </div>
+          <!-- /LC Header -->
+
           <!-- LC Body -->
           <div class="in-body">
-            <!-- LC Body Top -->
-            <div class="in-body-top">
-              <div id="alert">
-
-              </div>
-              <div id="find">
-
+            <!-- LC Alert -->
+            <div id="alert">
+              <i class="fas fa-bell-slash"></i>
+              <div id="alert-text">
+                <span>Ricevi notifiche di nuovi messaggi</span>
+                <a href="#">Attiva notifiche desktop</a>
               </div>
             </div>
+            <!-- /LC Alert -->
 
-            <!-- LC Body Bottom -->
-            <div class="in-body-bottom">
-
+            <!-- LC Find -->
+            <div id="find">
+              <div id="find-input-box">
+                <label for="findchat"><i class="fas fa-search"></i></label>
+                <input id="findchat" type="text" placeholder="Cerca o inizia una nuova chat">
+              </div>
             </div>
+            <!-- /LC Find -->
 
+            <!-- LC Chatlist -->
+            <div class="in-body-chatlist">
+              <div class="chat">
+                <img src="img/avatar_1.jpg" alt="Michele">
+                <div class="chat-text">
+                  <span class="user-name">Michele</span>
+                  <span class="user-last-msg">DAJEEEEE</span>
+                </div>
+              </div>
+              <div class="chat">
+                <img src="img/avatar_2.jpg" alt="Renato">
+                <div class="chat-text">
+                  <span class="user-name">Renato</span>
+                  <span class="user-last-msg">ANNAMOOO</span>
+                </div>
+              </div>
+            </div>
+            <!-- /LC Chatlist -->
           </div>
+          <!-- /LC Body -->
         </div>
-        <!-- Colonna destra -->
-        <div id="container-right">
-          <div class="in-header">
 
+        <!-- Right Column -->
+        <div id="container-right">
+          <!-- RC Header -->
+          <div class="in-header">
+            <div class="user-info">
+              <img src="img/avatar_1.jpg" alt="la tua immagine profilo">
+              <div id="user-data">
+                <span class="user-name">Michele</span>
+                <span class="last-access">Ultimo accesso oggi alle</span>
+              </div>
+            </div>
+
+            <div class="icon-box">
+              <i class="fas fa-search"></i>
+              <i class="fas fa-paperclip"></i>
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
           </div>
+
+          <!-- RC Body -->
           <div class="in-body">
 
           </div>
+
+          <!-- RC Footer -->
           <div id="in-footer">
 
           </div>
