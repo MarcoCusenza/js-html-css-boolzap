@@ -204,6 +204,7 @@ Azzurro: #8edafc
   display: flex;
   align-items: center;
   border-bottom: 1px solid #eaeaea;
+  cursor: pointer;
 }
 
 #container-left .chat:hover{
@@ -284,7 +285,6 @@ Azzurro: #8edafc
 }
 
 #container-right .row{
-  height: 60px;
   margin: 20px 0;
 }
 
@@ -319,12 +319,12 @@ Azzurro: #8edafc
   bottom: 3px;
 }
 
-#container-right .user-msg{
+#container-right .received{
   float: left;
   background-color: #ffffff;
 }
 
-#container-right .people-msg{
+#container-right .sent{
   float: right;
   background-color: #d5f9ba;
 }

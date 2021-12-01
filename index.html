@@ -110,7 +110,7 @@
           <!-- RC Body -->
           <div class="in-body">
             <div class="row clearfix" v-for="message in contacts[activeIndex].messages">
-              <div class="msg" :class="(message.status == 'sent') ? 'people-msg' : 'user-msg' ">
+              <div class="msg" :class="message.status">
                 <span class="msg-text">{{message.message}}</span>
                 <span class="msg-date">
                   <i class="fas fa-check-double" v-if="message.read"></i>
@@ -125,7 +125,7 @@
           <div id="in-footer">
             <i class="far fa-smile"></i>
             <div class="input-box">
-              <input type="text" placeholder="Scrivi un messaggio">
+              <input type="text" placeholder="Scrivi un messaggio" v-model="inputText" @keypress.enter="sendMessage()">
             </div>
             <i class="fas fa-microphone"></i>
           </div>

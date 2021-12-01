@@ -25,11 +25,11 @@ const app = new Vue({
           read: true,
         },
         {
-          date: '10/01/2020 16:17:52',
-          message: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex nesciunt totam quasi quisquam eaque, fugiat dolorum voluptatibus nihil earum molestias ad at. Voluptas exercitationem doloremque beatae aspernatur vitae rerum quam?',
+          date: '10/01/2020 16:15:22',
+          message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, repellat necessitatibus dolore sit inventore velit. Repellat dolorum ut perspiciatis rerum beatae fuga minus, assumenda ab itaque laudantium, eius impedit dolores.',
           status: 'received',
           read: true,
-        }
+        },
         ],
       },
       {
@@ -100,6 +100,7 @@ const app = new Vue({
       },
     ],
     activeIndex: 0,
+    inputText: '',
   },
   methods: {
     getUserAvatar: function (i) {
@@ -111,6 +112,15 @@ const app = new Vue({
     },
     isRead: function (bool) {
       return bool ? `<i class="fas fa-check-double"></i>` : `<i class="fas fa-check"></i>`
+    },
+    sendMessage: function () {
+      this.contacts[this.activeIndex].messages.push({
+        date: '10/01/2020 15:50:00',
+        message: this.inputText,
+        status: 'sent',
+        read: true,
+      });
+      this.inputText = '';
     },
   },
 });
