@@ -93,9 +93,9 @@
           <!-- RC Header -->
           <div class="in-header">
             <div class="user-info">
-              <img src="img/avatar_1.jpg" alt="la tua immagine profilo">
+              <img :src="getUserAvatar(activeIndex)" alt="la tua immagine profilo">
               <div id="user-data">
-                <span class="user-name">Michele</span>
+                <span class="user-name">{{contacts[activeIndex].name}}</span>
                 <span class="last-access">Ultimo accesso oggi alle</span>
               </div>
             </div>
