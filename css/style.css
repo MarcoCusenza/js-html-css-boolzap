@@ -211,6 +211,10 @@ Azzurro: #8edafc
   background-color: #fbfbfb;
 }
 
+#container-left .chat.hidden{
+  display: none !important;
+}
+
 #container-left .chat>*{
   margin: 0 0 0 10px;
 }
@@ -279,7 +283,7 @@ Azzurro: #8edafc
 
 /* RC Body */
 #container-right .in-body{
-  height: calc(100% - 120px);
+  height: calc(100% - 150px);
   background-image: url(../img/mine.jpg);
   overflow-y: scroll;
 }

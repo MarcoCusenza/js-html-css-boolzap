@@ -6,6 +6,7 @@ const app = new Vue({
         name: 'Michele',
         avatar: '_1',
         visible: true,
+        inputText: '', //dentro all'object per mantenere le bozze
         messages: [{
           date: '10/01/2020 15:30:55',
           message: 'Hai portato a spasso il cane?',
@@ -36,6 +37,7 @@ const app = new Vue({
         name: 'Fabio',
         avatar: '_2',
         visible: true,
+        inputText: '',
         messages: [{
           date: '20/03/2020 16:30:00',
           message: 'Ciao come stai?',
@@ -60,6 +62,7 @@ const app = new Vue({
         name: 'Samuele',
         avatar: '_3',
         visible: true,
+        inputText: '',
         messages: [{
           date: '28/03/2020 10:10:40',
           message: 'La Marianna va in campagna',
@@ -84,6 +87,7 @@ const app = new Vue({
         name: 'Luisa',
         avatar: '_6',
         visible: true,
+        inputText: '',
         messages: [{
           date: '10/01/2020 15:30:55',
           message: 'Lo sai che ha aperto una nuova pizzeria?',
@@ -100,7 +104,7 @@ const app = new Vue({
       },
     ],
     activeIndex: 0,
-    inputText: '',
+    searchText: '',
   },
   methods: {
     getUserAvatar: function (i) {
@@ -116,13 +120,14 @@ const app = new Vue({
     sendMessage: function () {
       this.contacts[this.activeIndex].messages.push({
         date: '10/01/2020 15:50:00',
-        message: this.inputText,
+        message: this.contacts[this.activeIndex].inputText,
         status: 'sent',
         read: true,
       });
-      this.inputText = '';
+      this.contacts[this.activeIndex].inputText = '';
+      const that = this;
       setTimeout(function () {
-        app.contacts[app.activeIndex].messages.push({
+        that.contacts[that.activeIndex].messages.push({
           date: '10/01/2020 15:50:01',
           message: 'ok',
           status: 'received',
@@ -130,5 +135,24 @@ const app = new Vue({
         });
       }, 1000);
     },
+    searchUser: function () {
+      const that = this;
+      for (let i = 0; i < this.contacts.length; i++) {
+        if (!(that.contacts[i].name.toLowerCase().includes(that.searchText.toLowerCase()))) {
+          that.contacts[i].visible = false;
+        }
+        if (that.searchText == '') {
+          for (let j = 0; j < that.contacts.length; j++) {
+            that.contacts[j].visible = true;
+          }
+        }
+      }
+    },
+    // formatInput: function (msg) {
+    //   if (msg.length % 30 == 0) {
+    //     console.log(msg);
+    //     msg = msg + '<br>';
+    //   }
+    // },
   },
 });

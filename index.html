@@ -62,16 +62,18 @@
             <div id="find">
               <div id="find-input-box">
                 <label for="findchat"><i class="fas fa-search"></i></label>
-                <input id="findchat" type="text" placeholder="Cerca o inizia una nuova chat">
+                <input id="findchat" type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchText"
+                  @keyup="searchUser()">
               </div>
             </div>
             <!-- /LC Find -->
 
             <!-- LC Chatlist -->
             <div id="chatlist">
-              <div class="chat" v-for="(contact, index) in contacts" :class="(index == activeIndex) ? 'chosen' : ''"
+              <div class="chat" v-for="(contact, index) in contacts"
+                :class="[(index == activeIndex) ? 'chosen' : '', contact.visible ? '' : 'hidden']"
                 @click="activeIndex=index">
-                <img :src="getUserAvatar(index)" alt="contact.name">
+                <img :src="getUserAvatar(index)" :alt="contact.name">
                 <div class="chat-text">
                   <span class="user-name">{{contact.name}}</span>
                   <span class="user-last-msg">
@@ -125,7 +127,9 @@
           <div id="in-footer">
             <i class="far fa-smile"></i>
             <div class="input-box">
-              <input type="text" placeholder="Scrivi un messaggio" v-model="inputText" @keypress.enter="sendMessage()">
+              <input type="text" placeholder="Scrivi un messaggio" v-model="contacts[activeIndex].inputText"
+                @keypress.enter="sendMessage()">
+              <!-- Da implementare per messaggi di una singola parola troppo lunga @keypress="formatInput(contacts[activeIndex].inputText)" -->
             </div>
             <i class="fas fa-microphone"></i>
           </div>
