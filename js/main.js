@@ -121,6 +121,14 @@ const app = new Vue({
         read: true,
       });
       this.inputText = '';
+      setTimeout(function () {
+        app.contacts[app.activeIndex].messages.push({
+          date: '10/01/2020 15:50:01',
+          message: 'ok',
+          status: 'received',
+          read: true,
+        });
+      }, 1000);
     },
   },
 });
