@@ -10,8 +10,7 @@
   <!-- FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
 
   <!-- CDN FONTAWSOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -74,29 +73,20 @@
                 <img :src="getUserAvatar(index)" alt="contact.name">
                 <div class="chat-text">
                   <span class="user-name">{{contact.name}}</span>
-                  <span class="user-last-msg"><i class="fas fa-check"></i>{{getLastMessage(index)}}</span>
+                  <span class="user-last-msg">
+                    <span class="msg-check">
+                      <i class="fas fa-check-double" v-if="getLastMessage(index).read"></i>
+                      <i class="fas fa-check" v-else></i>
+                    </span>
+                    <span class="msg-text">{{getLastMessage(index).message}}</span>
+                  </span>
                 </div>
               </div>
-              <!-- <div class="chat">
-                <img src="img/avatar_2.jpg" alt="Renato">
-                <div class="chat-text">
-                  <span class="user-name">Renato</span>
-                  <span class="user-last-msg"><i class="fas fa-check-double"></i>Andiamo?</span>
-                </div>
-              </div>
-              <div class="chat">
-                <img src="img/avatar_7.jpg" alt="Nico">
-                <div class="chat-text">
-                  <span class="user-name">Nico</span>
-                  <span class="user-last-msg"><i class="fas fa-check-double"></i>We</span>
-                </div>
-              </div> -->
             </div>
             <!-- /LC Chatlist -->
           </div>
           <!-- /LC Body -->
         </div>
-
         <!-- Right Column -->
         <div id="container-right">
           <!-- RC Header -->
@@ -121,7 +111,11 @@
             <div class="row clearfix" v-for="message in contacts[0].messages">
               <div class="msg" :class="(message.status == 'sent') ? 'people-msg' : 'user-msg' ">
                 <span class="msg-text">{{message.message}}</span>
-                <span class="msg-date">{{message.date}}</span>
+                <span class="msg-date">
+                  <i class="fas fa-check-double" v-if="message.read"></i>
+                  <i class="fas fa-check" v-else></i>
+                  {{message.date}}
+                </span>
               </div>
             </div>
           </div>
