@@ -67,7 +67,7 @@ const app = new Vue({
       },
       {
         name: 'Luisa',
-        avatar: '_4',
+        avatar: '_6',
         visible: true,
         messages: [{
           date: '10/01/2020 15:30:55',
@@ -84,6 +84,12 @@ const app = new Vue({
     ],
   },
   methods: {
-    
+    getUserAvatar: function (i) {
+      return `img/avatar${this.contacts[i].avatar}.jpg`
+    },
+    getLastMessage: function (i) {
+      const msgsArray = this.contacts[i].messages;
+      return msgsArray[msgsArray.length-1].message
+    },
   },
 });

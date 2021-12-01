@@ -70,14 +70,14 @@
 
             <!-- LC Chatlist -->
             <div id="chatlist">
-              <div class="chat chosen">
-                <img src="img/avatar_1.jpg" alt="Michele">
+              <div class="chat" v-for="(contact, index) in contacts">
+                <img :src="getUserAvatar(index)" alt="contact.name">
                 <div class="chat-text">
-                  <span class="user-name">Michele</span>
-                  <span class="user-last-msg"><i class="fas fa-check"></i>Ma anche no</span>
+                  <span class="user-name">{{contact.name}}</span>
+                  <span class="user-last-msg"><i class="fas fa-check"></i>{{getLastMessage(index)}}</span>
                 </div>
               </div>
-              <div class="chat">
+              <!-- <div class="chat">
                 <img src="img/avatar_2.jpg" alt="Renato">
                 <div class="chat-text">
                   <span class="user-name">Renato</span>
@@ -90,7 +90,7 @@
                   <span class="user-name">Nico</span>
                   <span class="user-last-msg"><i class="fas fa-check-double"></i>We</span>
                 </div>
-              </div>
+              </div> -->
             </div>
             <!-- /LC Chatlist -->
           </div>
@@ -118,24 +118,10 @@
 
           <!-- RC Body -->
           <div class="in-body">
-            <div class="row clearfix">
-              <div class="msg people-msg">
-                <span class="msg-text">Hai portato a spasso il cane?</span>
-                <span class="msg-date">10/01/2020 15:30:55</span>
-              </div>
-            </div>
-
-            <div class="row clearfix">
-              <div class="msg people-msg">
-                <span class="msg-text">Ricordati di dargli da mangiare</span>
-                <span class="msg-date">10/01/2020 15:50:00</span>
-              </div>
-            </div>
-
-            <div class="row clearfix">
-              <div class="msg user-msg">
-                <span class="msg-text">Tutto fatto! aaaaaaaaaaa aaaaaa aaaaaaaaaaa aaaaaaaaaaa aaa aaaa aaaa aaaaaaaaaaaa aaaaaaaa aaaa aaaaaaaa aaaa aaaaaaaa aaaa aaaaaaaaaaaa aaaa aaaaaaaa aaaa aaaa aaaaaaaa aaaa aaaaaaaaaaaaaaaa aaaa aaaa aaaa aaaaaaaa aaaa aaaa</span>
-                <span class="msg-date">10/01/2020 16:15:22</span>
+            <div class="row clearfix" v-for="message in contacts[0].messages">
+              <div class="msg" :class="(message.status == 'sent') ? 'people-msg' : 'user-msg' ">
+                <span class="msg-text">{{message.message}}</span>
+                <span class="msg-date">{{message.date}}</span>
               </div>
             </div>
           </div>
