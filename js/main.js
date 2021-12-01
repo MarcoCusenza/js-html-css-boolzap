@@ -99,6 +99,7 @@ const app = new Vue({
         ],
       },
     ],
+    activeIndex: 0,
   },
   methods: {
     getUserAvatar: function (i) {

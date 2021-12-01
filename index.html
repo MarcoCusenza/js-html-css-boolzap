@@ -69,7 +69,8 @@
 
             <!-- LC Chatlist -->
             <div id="chatlist">
-              <div class="chat" v-for="(contact, index) in contacts">
+              <div class="chat" v-for="(contact, index) in contacts" :class="(index == activeIndex) ? 'chosen' : ''"
+                @click="activeIndex=index">
                 <img :src="getUserAvatar(index)" alt="contact.name">
                 <div class="chat-text">
                   <span class="user-name">{{contact.name}}</span>
@@ -108,7 +109,7 @@
 
           <!-- RC Body -->
           <div class="in-body">
-            <div class="row clearfix" v-for="message in contacts[0].messages">
+            <div class="row clearfix" v-for="message in contacts[activeIndex].messages">
               <div class="msg" :class="(message.status == 'sent') ? 'people-msg' : 'user-msg' ">
                 <span class="msg-text">{{message.message}}</span>
                 <span class="msg-date">
