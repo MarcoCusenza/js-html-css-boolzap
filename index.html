@@ -54,6 +54,7 @@
               <div id="alert-text">
                 <span>Ricevi notifiche di nuovi messaggi</span>
                 <a href="#">Attiva notifiche desktop</a>
+                <i class="fas fa-times" @click="banner = false"></i>
               </div>
             </div>
             <!-- /LC Alert -->
@@ -77,11 +78,14 @@
                 <div class="chat-text">
                   <span class="user-name">{{contact.name}}</span>
                   <span class="user-last-msg">
-                    <span class="msg-check">
+                    <span class="msg-check" :class="{'hidden' : getLastMessage(index).deleted}">
                       <i class="fas fa-check-double" v-if="getLastMessage(index).read"></i>
                       <i class="fas fa-check" v-else></i>
                     </span>
-                    <span class="msg-text">{{getLastMessage(index).message}}</span>
+                    <span class="msg-text">
+                      <i class="fas fa-ban" :class="{'show-ib' : getLastMessage(index).deleted}"></i>
+                      {{getLastMessage(index).message}}
+                    </span>
                   </span>
                 </div>
               </div>
@@ -113,11 +117,14 @@
           <div class="in-body">
             <div class="row clearfix" v-for="(message, index) in contacts[activeIndex].messages">
               <div class="msg" :class="message.status">
-                <span class="msg-text" :class="{deleted : message.deleted}">{{message.message}}</span>
-                <span class="msg-date">
-                  <i class="fas fa-check-double" v-if="message.read"></i>
-                  <i class="fas fa-check" v-else></i>
-                  {{getTime(message.date)}}
+                <span class="msg-text" :class="{deleted : message.deleted}">
+                  <i class="fas fa-ban" :class="{'show-ib' : message.deleted}"></i>
+                  {{message.message}}
+                </span>
+                <span class=" msg-date">
+                    <i class="fas fa-check-double" v-if="message.read"></i>
+                    <i class="fas fa-check" v-else></i>
+                    {{getTime(message.date)}}
                 </span>
                 <div class="msg-dropdown-box">
                   <i class="fas fa-chevron-down" @click="showDropdown(index)"></i>

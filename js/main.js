@@ -138,6 +138,7 @@ const app = new Vue({
     activeIndex: 0,
     searchText: '',
     focusing: -1,
+    banner: true,
   },
   methods: {
     getUserAvatar: function (i) {
@@ -202,7 +203,7 @@ const app = new Vue({
       }
     },
     deleteMsg: function (i) {
-      this.contacts[this.activeIndex].messages[i].message = 'Questo messaggio è stato eliminato';
+      this.contacts[this.activeIndex].messages[i].message ='Questo messaggio è stato eliminato';
       this.contacts[this.activeIndex].messages[i].deleted = true;
     }
   },
