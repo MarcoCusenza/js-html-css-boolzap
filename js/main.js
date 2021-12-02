@@ -12,24 +12,32 @@ const app = new Vue({
           message: 'Hai portato a spasso il cane?',
           status: 'sent',
           read: true,
+          focused: false,
+          deleted: false,
         },
         {
           date: '10/01/2020 15:50:00',
           message: 'Ricordati di dargli da mangiare',
           status: 'sent',
           read: true,
+          focused: false,
+          deleted: false,
         },
         {
           date: '10/01/2020 16:15:22',
           message: 'Tutto fatto!',
           status: 'received',
           read: true,
+          focused: false,
+          deleted: false,
         },
         {
           date: '10/01/2020 16:15:22',
           message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, repellat necessitatibus dolore sit inventore velit. Repellat dolorum ut perspiciatis rerum beatae fuga minus, assumenda ab itaque laudantium, eius impedit dolores.',
           status: 'received',
           read: true,
+          focused: false,
+          deleted: false,
         },
         ],
       },
@@ -43,19 +51,33 @@ const app = new Vue({
           message: 'Ciao come stai?',
           status: 'sent',
           read: true,
+          focused: false,
+          deleted: false,
         },
         {
           date: '20/03/2020 16:30:55',
           message: 'Bene grazie! Stasera ci vediamo?',
           status: 'received',
           read: true,
+          focused: false,
+          deleted: false,
         },
         {
           date: '20/03/2020 16:35:00',
           message: 'Mi piacerebbe ma devo andare a fare la spesa.',
-          status: 'received',
+          status: 'sent',
           read: true,
-        }
+          focused: false,
+          deleted: false,
+        },
+        {
+          date: '20/03/2020 16:35:00',
+          message: 'Ok',
+          status: 'received',
+          read: false,
+          focused: false,
+          deleted: false,
+        },
         ],
       },
       {
@@ -68,18 +90,24 @@ const app = new Vue({
           message: 'La Marianna va in campagna',
           status: 'received',
           read: true,
+          focused: false,
+          deleted: false,
         },
         {
           date: '28/03/2020 10:20:10',
           message: 'Sicuro di non aver sbagliato chat?',
           status: 'sent',
-          read: false,
+          read: true,
+          focused: false,
+          deleted: false,
         },
         {
           date: '28/03/2020 16:15:22',
           message: 'Ah scusa!',
           status: 'received',
           read: false,
+          focused: false,
+          deleted: false,
         }
         ],
       },
@@ -93,18 +121,23 @@ const app = new Vue({
           message: 'Lo sai che ha aperto una nuova pizzeria?',
           status: 'sent',
           read: true,
+          focused: false,
+          deleted: false,
         },
         {
           date: '10/01/2020 15:50:00',
           message: 'Si, ma preferirei andare al cinema',
           status: 'received',
-          read: true,
+          read: false,
+          focused: false,
+          deleted: false,
         }
         ],
       },
     ],
     activeIndex: 0,
     searchText: '',
+    focusing: -1,
   },
   methods: {
     getUserAvatar: function (i) {
@@ -118,7 +151,7 @@ const app = new Vue({
       return bool ? `<i class="fas fa-check-double"></i>` : `<i class="fas fa-check"></i>`
     },
     getTime: function (date) {
-      return `${dayjs(date).hour()}:${dayjs(date).minute()}`
+      return `${dayjs(date, 'DD/MM/YYYY HH:mm:ss').hour()}:${dayjs(date, 'DD/MM/YYYY HH:mm:ss').minute()}`
     },
     sendMessage: function () {
       // const now = `${dayjs().hour()}:${dayjs().minute()}`;
@@ -152,11 +185,25 @@ const app = new Vue({
         }
       }
     },
-    // formatInput: function (msg) {
-    //   if (msg.length % 30 == 0) {
-    //     console.log(msg);
-    //     msg = msg + '<br>';
-    //   }
-    // },
+    showDropdown: function (i) { //APRE IL DROPDOWN DEI MESSAGGI (problema: evitare la riapertura se clicco sulla freccia per chiudere)
+      const that = this;
+      const msg = this.contacts[this.activeIndex].messages[i];
+      setTimeout(function () {
+        if (!msg.focused) {
+          msg.focused = true;
+          that.focusing = i;
+        }
+      }, 0);
+    },
+    closeDropdown: function () { //CHIUDE IL DROPDOWN MESSAGGI CLICCANDO OVUNQUE
+      if (this.focusing != -1) {
+        this.contacts[this.activeIndex].messages[this.focusing].focused = false;
+        this.focusing = -1;
+      }
+    },
+    deleteMsg: function (i) {
+      this.contacts[this.activeIndex].messages[i].message = 'Questo messaggio è stato eliminato';
+      this.contacts[this.activeIndex].messages[i].deleted = true;
+    }
   },
 });

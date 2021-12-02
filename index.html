@@ -24,7 +24,7 @@
 
 <body>
   <div id="root">
-    <div id="page" DISABLED-class="debug">
+    <div id="page" DISABLED-class="debug" @click="closeDropdown()">
       <!-- Boolzapp Window -->
       <div id="container-window">
 
@@ -111,14 +111,20 @@
 
           <!-- RC Body -->
           <div class="in-body">
-            <div class="row clearfix" v-for="message in contacts[activeIndex].messages">
+            <div class="row clearfix" v-for="(message, index) in contacts[activeIndex].messages">
               <div class="msg" :class="message.status">
-                <span class="msg-text">{{message.message}}</span>
+                <span class="msg-text" :class="{deleted : message.deleted}">{{message.message}}</span>
                 <span class="msg-date">
                   <i class="fas fa-check-double" v-if="message.read"></i>
                   <i class="fas fa-check" v-else></i>
                   {{getTime(message.date)}}
                 </span>
+                <div class="msg-dropdown-box">
+                  <i class="fas fa-chevron-down" @click="showDropdown(index)"></i>
+                  <div class="msg-dropdown" :class="{show : message.focused}">
+                    <span @click="deleteMsg(index)">Elimina</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -129,8 +135,6 @@
             <div class="input-box">
               <input type="text" placeholder="Scrivi un messaggio" v-model="contacts[activeIndex].inputText"
                 @keypress.enter="sendMessage()">
-              <!-- Da implementare per messaggi di una singola parola troppo lunga 
-                @keypress="formatInput(contacts[activeIndex].inputText)" -->
             </div>
             <i class="fas fa-microphone"></i>
           </div>
@@ -144,6 +148,9 @@
 
   <!-- DAYJS CDN example (unpkg) -->
   <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+  <script src="https://unpkg.com/dayjs@1.8.21/plugin/customParseFormat"></script>
+  <script> dayjs.extend(window.dayjs_plugin_customParseFormat);</script>
+
 
   <!-- MY JS SCRIPT -->
   <script src="js/main.js"></script>

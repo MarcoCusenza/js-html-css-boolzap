@@ -23,6 +23,15 @@ Azzurro: #8edafc
   background-color: #eaeaea !important;
 }
 
+.show{
+  display: block !important;
+}
+
+.deleted{
+  color: #b1b1b1 !important;
+  font-style: italic;
+}
+
 .clearfix::after{
   clear: both;
   display: table;
@@ -306,8 +315,10 @@ Azzurro: #8edafc
 
 #container-right .msg-text{
   max-height: 80%;
+  width: 100%;
   font-size: 16px;
   color: #1D1D1F;
+  overflow-wrap: break-word; /* UNA PAROLA LUNGA VIENE DIVISA SU PIU RIGHE!!! */
 }
 
 #container-right .msg-date i{
@@ -321,6 +332,38 @@ Azzurro: #8edafc
   position: absolute;
   right: 5px;
   bottom: 3px;
+}
+
+#container-right .msg-dropdown-box {
+  display: inline-block;
+  position: absolute;
+  right: 8px;
+  top: 2px;
+}
+
+#container-right .msg-dropdown-box i{
+  font-size: 14px;
+  color: #b1b1b1;
+  position: relative;
+  cursor: pointer;
+  z-index: 999;
+}
+
+#container-right .msg-dropdown{
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #eaeaea;
+  color: #6b7376;
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 5px 10px;
+  z-index: 1;
+}
+
+#container-right .msg-dropdown span{
+  cursor: pointer;
+  font-size: 15px;
 }
 
 #container-right .received{
