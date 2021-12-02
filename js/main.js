@@ -193,14 +193,14 @@ const app = new Vue({
     },
 
     showDropdown: function (i) { //APRE IL DROPDOWN DEI MESSAGGI (problema: evitare la riapertura se clicco sulla freccia per chiudere)
-      const that = this;
       const msg = this.contacts[this.activeIndex].messages[i];
-      setTimeout(function () {
-        if (!msg.focused) {
+      if (!msg.deleted && !msg.focused) {
+        const that = this;
+        setTimeout(function () {
           msg.focused = true;
           that.focusing = i;
-        }
-      }, 0);
+        }, 10);
+      }
     },
 
     closeDropdown: function () { //CHIUDE IL DROPDOWN MESSAGGI CLICCANDO OVUNQUE
@@ -211,13 +211,15 @@ const app = new Vue({
     },
 
     deleteMsg: function (i) {
-      this.contacts[this.activeIndex].messages[i].message ='Questo messaggio è stato eliminato';
+      this.contacts[this.activeIndex].messages[i].message = 'Questo messaggio è stato eliminato';
       this.contacts[this.activeIndex].messages[i].deleted = true;
     },
 
     viewMsgs: function (i) {
       this.contacts[i].messages.forEach(el => {
-        el.read = true;
+        setTimeout(function () {
+          el.read = true;
+        }, 800);
       });
     },
   },

@@ -21,6 +21,7 @@ Azzurro: #8edafc
 
 .chosen{
   background-color: #eaeaea !important;
+  transition: .3s;
 }
 
 .show{
@@ -38,6 +39,7 @@ Azzurro: #8edafc
 .deleted{
   color: #b1b1b1 !important;
   font-style: italic;
+  margin-right: 10px;
 }
 
 .clearfix::after{
@@ -429,6 +431,7 @@ Azzurro: #8edafc
   font-size: 25px;
   color: #6b7376;
   text-align: center;
+  cursor: pointer;
 }
 
 #container-right #in-footer .input-box{
