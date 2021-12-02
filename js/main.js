@@ -117,9 +117,13 @@ const app = new Vue({
     isRead: function (bool) {
       return bool ? `<i class="fas fa-check-double"></i>` : `<i class="fas fa-check"></i>`
     },
+    getTime: function (date) {
+      return `${dayjs(date).hour()}:${dayjs(date).minute()}`
+    },
     sendMessage: function () {
+      // const now = `${dayjs().hour()}:${dayjs().minute()}`;
       this.contacts[this.activeIndex].messages.push({
-        date: '10/01/2020 15:50:00',
+        date: dayjs(),
         message: this.contacts[this.activeIndex].inputText,
         status: 'sent',
         read: true,
@@ -128,7 +132,7 @@ const app = new Vue({
       const that = this;
       setTimeout(function () {
         that.contacts[that.activeIndex].messages.push({
-          date: '10/01/2020 15:50:01',
+          date: dayjs(),
           message: 'ok',
           status: 'received',
           read: true,
