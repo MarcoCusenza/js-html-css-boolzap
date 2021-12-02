@@ -73,7 +73,7 @@
             <div id="chatlist">
               <div class="chat" v-for="(contact, index) in contacts"
                 :class="[(index == activeIndex) ? 'chosen' : '', contact.visible ? '' : 'hidden']"
-                @click="activeIndex=index">
+                @click="[activeIndex=index, viewMsgs(index)]">
                 <img :src="getUserAvatar(index)" :alt="contact.name">
                 <div class="chat-text">
                   <span class="user-name">{{contact.name}}</span>

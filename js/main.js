@@ -144,16 +144,20 @@ const app = new Vue({
     getUserAvatar: function (i) {
       return `img/avatar${this.contacts[i].avatar}.jpg`
     },
+
     getLastMessage: function (i) {
       const msgsArray = this.contacts[i].messages;
       return msgsArray[msgsArray.length - 1]
     },
+
     isRead: function (bool) {
       return bool ? `<i class="fas fa-check-double"></i>` : `<i class="fas fa-check"></i>`
     },
+
     getTime: function (date) {
       return `${dayjs(date, 'DD/MM/YYYY HH:mm:ss').hour()}:${dayjs(date, 'DD/MM/YYYY HH:mm:ss').minute()}`
     },
+
     sendMessage: function () {
       // const now = `${dayjs().hour()}:${dayjs().minute()}`;
       this.contacts[this.activeIndex].messages.push({
@@ -164,7 +168,7 @@ const app = new Vue({
       });
       this.contacts[this.activeIndex].inputText = '';
       const that = this;
-      setTimeout(function () {
+      setTimeout(function () {//Risposta della CPU
         that.contacts[that.activeIndex].messages.push({
           date: dayjs(),
           message: 'ok',
@@ -173,6 +177,7 @@ const app = new Vue({
         });
       }, 1000);
     },
+
     searchUser: function () {
       const that = this;
       for (let i = 0; i < this.contacts.length; i++) {
@@ -186,6 +191,7 @@ const app = new Vue({
         }
       }
     },
+
     showDropdown: function (i) { //APRE IL DROPDOWN DEI MESSAGGI (problema: evitare la riapertura se clicco sulla freccia per chiudere)
       const that = this;
       const msg = this.contacts[this.activeIndex].messages[i];
@@ -196,15 +202,23 @@ const app = new Vue({
         }
       }, 0);
     },
+
     closeDropdown: function () { //CHIUDE IL DROPDOWN MESSAGGI CLICCANDO OVUNQUE
       if (this.focusing != -1) {
         this.contacts[this.activeIndex].messages[this.focusing].focused = false;
         this.focusing = -1;
       }
     },
+
     deleteMsg: function (i) {
       this.contacts[this.activeIndex].messages[i].message ='Questo messaggio è stato eliminato';
       this.contacts[this.activeIndex].messages[i].deleted = true;
-    }
+    },
+
+    viewMsgs: function (i) {
+      this.contacts[i].messages.forEach(el => {
+        el.read = true;
+      });
+    },
   },
 });
