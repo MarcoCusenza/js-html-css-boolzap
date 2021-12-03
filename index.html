@@ -23,7 +23,7 @@
 
 
 <body>
-  <div id="root">
+  <div id="root" :data-theme="theme">
     <div id="page" DISABLED-class="debug" @click="closeDropdown()">
       <!-- Boolzapp Window -->
       <div id="container-window">
@@ -48,16 +48,27 @@
 
           <!-- LC Body -->
           <div class="in-body">
-            <!-- LC Alert -->
-            <div id="alert">
+            <!-- LC Alert Notifications-->
+            <div class="alert" v-if="bannerNotif">
               <i class="fas fa-bell-slash"></i>
-              <div id="alert-text">
+              <div class="alert-text">
                 <span>Ricevi notifiche di nuovi messaggi</span>
                 <a href="#">Attiva notifiche desktop</a>
-                <i class="fas fa-times" @click="banner = false"></i>
+                <i class="fas fa-times" @click="bannerNotif = false"></i>
               </div>
             </div>
-            <!-- /LC Alert -->
+            <!-- /LC Alert Notifications-->
+
+            <!-- LC Alert Darkmode -->
+            <div class="alert" v-if="bannerDark">
+              <i class="fas fa-bell-slash"></i>
+              <div class="alert-text">
+                <span>Ricevi notifiche di nuovi messaggi</span>
+                <a href="#">Attiva notifiche desktop</a>
+                <i class="fas fa-times" @click="bannerDark = false"></i>
+              </div>
+            </div>
+            <!-- /LC Alert Darkmode -->
 
             <!-- LC Find -->
             <div id="find">
@@ -70,7 +81,7 @@
             <!-- /LC Find -->
 
             <!-- LC Chatlist -->
-            <div id="chatlist">
+            <div id="chatlist" :class="getHeight()">
               <div class="chat" v-for="(contact, index) in contacts"
                 :class="[(index == activeIndex) ? 'chosen' : '', contact.visible ? '' : 'hidden']"
                 @click="[activeIndex=index, viewMsgs(index)]">
