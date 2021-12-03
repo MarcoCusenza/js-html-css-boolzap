@@ -53,18 +53,18 @@
               <i class="fas fa-bell-slash"></i>
               <div class="alert-text">
                 <span>Ricevi notifiche di nuovi messaggi</span>
-                <a href="#">Attiva notifiche desktop</a>
+                <a href="#" @click="bannerNotif=false">Attiva notifiche desktop</a>
                 <i class="fas fa-times" @click="bannerNotif = false"></i>
               </div>
             </div>
             <!-- /LC Alert Notifications-->
 
             <!-- LC Alert Darkmode -->
-            <div class="alert" v-if="bannerDark">
-              <i class="fas fa-bell-slash"></i>
+            <div class="alert dark" v-if="bannerDark">
+              <i class="fas fa-moon"></i>
               <div class="alert-text">
-                <span>Ricevi notifiche di nuovi messaggi</span>
-                <a href="#">Attiva notifiche desktop</a>
+                <span>Prova la nuova DarkMode!</span>
+                <a href="#" @click="[theme='dark', bannerDark=false]">Prova ORA!</a>
                 <i class="fas fa-times" @click="bannerDark = false"></i>
               </div>
             </div>
@@ -134,9 +134,9 @@
                   {{message.message}}
                 </span>
                 <span class=" msg-date">
-                    <i class="fas fa-check-double" v-if="message.read"></i>
-                    <i class="fas fa-check" v-else></i>
-                    {{getTime(message.date)}}
+                  <i class="fas fa-check-double" v-if="message.read"></i>
+                  <i class="fas fa-check" v-else></i>
+                  {{getTime(message.date)}}
                 </span>
                 <div class="msg-dropdown-box">
                   <i class="fas fa-chevron-down" @click="showDropdown(index)"></i>
